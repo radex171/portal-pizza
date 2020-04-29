@@ -1,12 +1,9 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import App from './App';
+import { render } from '@testing-library/react';
 
 
 test('renders learn react link', () => {
-  const component = shallow(<App />);
+  const component = render(<div />);
 
   expect(component).toBeTruthy();
 });
-  
-
