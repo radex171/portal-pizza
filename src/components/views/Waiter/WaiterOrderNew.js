@@ -41,11 +41,14 @@ componentDidMount(){
 }
 
 render() {
-   const {products} = this.props;
+   
   return (
 
     <div className={styles.component}>
+      <FormControl>
+        <InputLabel>WYbierz potrawę</InputLabel>
       
+      </FormControl>
     </div>
   );
     

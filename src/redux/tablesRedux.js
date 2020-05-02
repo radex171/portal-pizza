@@ -52,20 +52,8 @@ export const fetchUpdate = (tableId, newStatus) => {
       });
   };
 };
-export const fetchProductFromAPI = () => {
-  return (dispatch, getState) => {
-    dispatch(fetchStarted());
-  
-    Axios
-      .get(`${api.url}/${api.product}`)
-      .then(res => {
-        dispatch(fetchSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
-  };
-};
+
+
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
