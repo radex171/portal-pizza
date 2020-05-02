@@ -34,34 +34,34 @@ class Waiter extends React.Component {
         return (
           
           <>
-            <Button onClick={() => updateStatus(orderId, 'thinking')} component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>thinking</Button>
-            <Button onClick={() => updateStatus(orderId, 'New order')} component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Button>
+            <Button onClick={() => updateStatus(orderId, 'thinking')}>thinking</Button>
+            <Button onClick={() => updateStatus(orderId, 'ordered')} component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Button>
 
           </>
         
         );
       case 'thinking':
         return (
-          <Button onClick={() => updateStatus(orderId, 'Thinking')}>Thinking</Button>
+          <Button onClick={() => updateStatus(orderId, 'ordered')}>Ordered</Button>
         );
       case 'ordered':
         return (
-          <Button onClick={() => updateStatus(orderId, 'Prepared')}>Prepared</Button>
+          <Button onClick={() => updateStatus(orderId, 'prepared')}>Prepared</Button>
         );
       case 'prepared':
         return (
-          <Button onClick={() => updateStatus(orderId, 'Delivered')}>Delivered</Button>
+          <Button onClick={() => updateStatus(orderId, 'delivered')}>Delivered</Button>
         );
       case 'delivered':
         return (
-          <Button onClick={() => updateStatus(orderId, 'Paid')}>Paid</Button>
+          <Button onClick={() => updateStatus(orderId, 'paid')}>Paid</Button>
         );
       case 'paid':
         return (
-          <Button onClick={() => updateStatus(orderId, 'Free')}>Free</Button>
+          <Button onClick={() => updateStatus(orderId, 'free')}>Free</Button>
         );
       default:
-        return null;
+        return null ;
     }
   }
 
@@ -83,40 +83,51 @@ class Waiter extends React.Component {
       );
     } else {
       return (
-        <Paper className={styles.component}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Table</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Order</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tables.map(row => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">
-                    {row.id}
-                  </TableCell>
-                  <TableCell>
-                    {row.status}
-                  </TableCell>
-                  <TableCell>
-                    {row.order && (
-                      <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                        {row.order}
-                      </Button>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {this.renderActions(row.id, row.status)}
-                  </TableCell>
+        <div className={styles.component}>
+          <Paper >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Table</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Order</TableCell>
+                  <TableCell>Table/Delivery</TableCell>
+                  <TableCell>Action</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
+              </TableHead>
+              <TableBody>
+                {tables.map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell component="th" scope="row">
+                      {row.id}
+                    </TableCell>
+                    <TableCell>
+                      {row.status}
+                    </TableCell>
+                  
+                    <TableCell>
+                      {row.order && (
+                        <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
+                          {row.order}
+                        </Button>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {row.placeOrder}
+                    </TableCell>
+                    <TableCell>
+                      {this.renderActions(row.id, row.status)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <br/><br/><br/>
+          <Button variant="contained" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>
+            + Add new order
+          </Button>
+        </div>
       );
     }
   }
