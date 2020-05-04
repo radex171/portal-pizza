@@ -1,7 +1,8 @@
 {
   "product": [
     {
-      "id": "cake",
+      "id": "1",
+      "idName": "cake",
       "class": "small",
       "name": "Zio Stefano's Doughnut",
       "price": 9,
@@ -11,7 +12,8 @@
       ]
     },
     {
-      "id": "breakfast",
+      "id": "2",
+      "idName": "breakfast",
       "class": "small",
       "name": "Zia Giulia's Breakfast",
       "price": 9,
@@ -46,7 +48,8 @@
       }
     },
     {
-      "id": "pizza",
+      "id": "3",
+      "idName": "pizza",
       "name": "Nonna Alba's Pizza",
       "price": 20,
       "description": "The true taste of Italy &ndash; homemade pizza as prepared by our grandmothers in old-fashoned brick ovens. Choose your favorite topping and enjoy your comfort food! All ingredients come straight from eco-friendly, trusted farms in the Italian countryside.",
@@ -146,7 +149,8 @@
       }
     },
     {
-      "id": "salad",
+      "id": "4",
+      "idName": "salad",
       "name": "Nonno Alberto's Salad",
       "price": 9,
       "description": "A delicious salad made of fresh, home-grown products on a crispy lettuce base.",

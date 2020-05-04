@@ -3,7 +3,7 @@ import WaiterOrderNew from './WaiterOrderNew';
 import { getAll, fetchProductsFromAPI, getLoadingState } from '../../../redux/ProductRedux';
 
 const mapStateToProps = (state) => ({
-  tables: getAll(state),
+  products: getAll(state),
   loading: getLoadingState(state),
 });
 

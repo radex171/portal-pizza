@@ -17,7 +17,7 @@ class Waiter extends React.Component {
     updateStatus: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
-      error: PropTypes.oneOfType(PropTypes.bool,PropTypes.string),
+      error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
     }),
    
   }
