@@ -17,64 +17,68 @@ class Waiter extends React.Component {
     updateStatus: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
-      error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
+      error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     }),
-   
+
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const { fetchTables } = this.props;
     fetchTables();
   }
 
-  renderActions(orderId, status){
+  renderActions(orderId, status) {
     const { updateStatus } = this.props;
     switch (status) {
       case 'free':
+
         return (
-          
-          <>
+          <div>
             <Button onClick={() => updateStatus(orderId, 'thinking')}>thinking</Button>
             <Button onClick={() => updateStatus(orderId, 'ordered')} component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Button>
-
-          </>
-        
+          </div>
         );
+
       case 'thinking':
         return (
           <Button onClick={() => updateStatus(orderId, 'ordered')}>Ordered</Button>
         );
+
       case 'ordered':
         return (
           <Button onClick={() => updateStatus(orderId, 'prepared')}>Prepared</Button>
         );
+
       case 'prepared':
         return (
           <Button onClick={() => updateStatus(orderId, 'delivered')}>Delivered</Button>
         );
+
       case 'delivered':
         return (
           <Button onClick={() => updateStatus(orderId, 'paid')}>Paid</Button>
         );
+
       case 'paid':
         return (
           <Button onClick={() => updateStatus(orderId, 'free')}>Free</Button>
         );
+
       default:
-        return null ;
+        return null;
     }
   }
 
   render() {
     const { loading: { active, error }, tables } = this.props;
 
-    if(active || !tables.length){
+    if (active || !tables.length) {
       return (
         <Paper className={styles.component}>
           <p>Loading...</p>
         </Paper>
       );
-    } else if(error) {
+    } else if (error) {
       return (
         <Paper className={styles.component}>
           <p>Error! Details:</p>
@@ -104,7 +108,7 @@ class Waiter extends React.Component {
                     <TableCell>
                       {row.status}
                     </TableCell>
-                  
+
                     <TableCell>
                       {row.order && (
                         <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
@@ -123,7 +127,7 @@ class Waiter extends React.Component {
               </TableBody>
             </Table>
           </Paper>
-          <br/><br/><br/>
+          <br /><br /><br />
           <Button variant="contained" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>
             + Add new order
           </Button>
@@ -131,9 +135,6 @@ class Waiter extends React.Component {
       );
     }
   }
-
 }
-
-
 
 export default Waiter;

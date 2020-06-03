@@ -7,27 +7,16 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
-
 
 const demoDish = [
   {
     id: '12',
     dishName: 'pizza',
-    options: [ 'Tomato', 'Mushroooms','standard'],
+    options: ['Tomato', 'Mushroooms', 'standard'],
   },
-  /* {
-    id: '16',
-    dishName: 'coffe',
-    options: [ 'cappucino'],
-  },
-  {
-    id: '19',
-    dishName: 'salad',
-    options: [ 'fresh herbs', 'Chesse','Olives'],
-  }*/];
-const WaiterOrderId = ({match}) => {
+];
+const WaiterOrderId = ({ match }) => {
 
   return (
     <div className={styles.component}>
@@ -36,35 +25,35 @@ const WaiterOrderId = ({match}) => {
           <TableHead>
             <TableRow>
               <Typography variant="h4">
-            Order No {match.params.id}
-              </Typography><br/><br/>
-             
+                Order No {match.params.id}
+              </Typography><br /><br />
+
             </TableRow>
           </TableHead>
           <TableBody>
-            {demoDish.map(row =>(
+            {demoDish.map(row => (
               <TableRow key={row.id}>
-                
-                <TableCell  component="th" scope="row">
+
+                <TableCell component="th" scope="row">
                   <Typography variant="h5">
-                    {row.dishName} 
+                    {row.dishName}
                   </Typography>
-               
-               
-                  {row.options.map(params =>(
-                    <TableCell  key={params}>{params}</TableCell>
+
+                  {row.options.map(params => (
+                    <TableCell key={params}>{params}</TableCell>
                   ))}
-               
+
                 </TableCell>
-              
+
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </Paper>
     </div>
-  );};
-  
+  );
+};
+
 WaiterOrderId.propTypes = {
   match: PropTypes.string,
 };
